@@ -10,7 +10,7 @@ def main():
     pygame.display.set_icon(icon)
     pygame.display.set_caption('set caption here')
 
-    # Create a screen of size 360x360
+    # Create a screen of size 1000x1000
     screen = pygame.display.set_mode((1000,1000))
 
     # Define a variable <running> that control the main loop
