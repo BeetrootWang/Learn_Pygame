@@ -17,6 +17,9 @@ def main():
     # Create a screen of size 1000x1000
     screen = pygame.display.set_mode((1000,1000))
 
+    # set frame per second
+    FPS = pygame.time.Clock()
+
     # Define a variable <running> that control the main loop
     running = True
 
@@ -44,14 +47,16 @@ def main():
             sgn_y = -sgn_y
 
         cnt = cnt + 1
-        if cnt % 100==0:
-            speed = np.random.exponential()*.5
+        if cnt % 120==0:
+            speed = np.random.exponential()*5
             sgn_x = (-1)**np.random.randint(0,2)
             sgn_y = (-1)**np.random.randint(0,2)
             screen.fill((0,0,0))
         # update screen
         screen.blit(icon,(x_axis, y_axis))
         pygame.display.flip()
+        FPS.tick(60)
+
 
 if __name__ == '__main__':
     main()
