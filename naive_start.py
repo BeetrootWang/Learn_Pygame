@@ -28,7 +28,8 @@ def main():
     y_axis = 600
     sgn_x = 1
     sgn_y = 1
-    speed = .1
+    speed_x = .1
+    speed_y = .1
     cnt = 0
 
     # Main loop
@@ -39,8 +40,8 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
         # update the screen
-        x_axis = max(min(x_axis+sgn_x*speed, 900),50)
-        y_axis = max(min(y_axis+sgn_y*speed, 900),50)
+        x_axis = max(min(x_axis+sgn_x*speed_x, 900),50)
+        y_axis = max(min(y_axis+sgn_y*speed_y, 900),50)
         if x_axis>=900 or x_axis<=50:
             sgn_x = -sgn_x
         if y_axis>=900 or y_axis<=50:
@@ -48,10 +49,12 @@ def main():
 
         cnt = cnt + 1
         if cnt % 120==0:
-            speed = np.random.exponential()*5
+            speed_x = np.random.exponential()*5
+            speed_y = np.random.exponential()*5
             sgn_x = (-1)**np.random.randint(0,2)
             sgn_y = (-1)**np.random.randint(0,2)
-            screen.fill((0,0,0))
+            if cnt%1200==0:
+                screen.fill((0,0,0))
         # update screen
         screen.blit(icon,(x_axis, y_axis))
         pygame.display.flip()
